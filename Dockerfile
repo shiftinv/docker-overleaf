@@ -15,8 +15,8 @@ ENV SHARELATEX_CONFIG /etc/sharelatex/settings.coffee
 
 # Checkout Overleaf Community Edition repo
 # ----------------------------------------
-RUN git clone https://github.com/overleaf/overleaf.git \
-	--depth 1 /var/www/sharelatex
+RUN git clone https://github.com/overleaf/overleaf.git /var/www/sharelatex \
+ && git checkout deb1ca36391c71cfec3720ddd9181e0f8be89101
 
 
 # Install dependencies needed to run configuration scripts

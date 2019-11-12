@@ -3,49 +3,49 @@ module.exports =
 [{
 	name: "web",
 	repo: "https://github.com/sharelatex/web-sharelatex.git",
-	version: "master"
+	version: "fdeddd220c9b3e6d57b59465a2415280adea26c4"
 }, {
 	name: "real-time",
 	repo: "https://github.com/sharelatex/real-time-sharelatex.git",
-	version: "master"
+	version: "2060a2fdc5c6badfa92a717a6ff35dfe91ad9f20"
 }, {
 	name: "document-updater",
 	repo: "https://github.com/sharelatex/document-updater-sharelatex.git",
-	version: "master"
+	version: "0c3d8ca80b526fa13911e49372be396f6669396d"
 }, {
 	name: "clsi",
 	repo: "https://github.com/sharelatex/clsi-sharelatex.git",
-	version: "master"
+	version: "a62ff6e248d624c5ad78dbf08bb4613b043abdc2"
 }, {
 	name: "filestore",
 	repo: "https://github.com/sharelatex/filestore-sharelatex.git",
-	version: "master"
+	version: "43b8a9093b8d1d394bbd6111ac19221faef5e05c"
 }, {
 	name: "track-changes",
 	repo: "https://github.com/sharelatex/track-changes-sharelatex.git",
-	version: "master"
+	version: "5e3e5e6cb7f94a205f5848e1b84a22c3e2778dce"
 }, {
 	name: "docstore",
 	repo: "https://github.com/sharelatex/docstore-sharelatex.git",
-	version: "master"
+	version: "897e7b044a923de1cc584179d493974e81f19108"
 }, {
 	name: "chat",
 	repo: "https://github.com/sharelatex/chat-sharelatex.git",
-	version: "master"
+	version: "6b8c6ef44ffa086c2183f067790e60a272b3a004"
 }, {
 	name: "tags",
 	repo: "https://github.com/sharelatex/tags-sharelatex.git",
-	version: "master"
+	version: "9b954d87941c7c56518ef28e13efbbf85b52c168"
 }, {
 	name: "spelling",
 	repo: "https://github.com/sharelatex/spelling-sharelatex.git",
-	version: "master"
+	version: "fcd804349339ab07f0d3c7653203cb04fed87f72"
 }, {
 	name: "contacts",
 	repo: "https://github.com/sharelatex/contacts-sharelatex.git",
-	version: "sk-update-mongojs"
+	version: "2a41cc7ea4c5ae5f564aacce79083f00b88c5913"
 }, {
-        name: "notifications",
-        repo: "https://github.com/sharelatex/notifications-sharelatex.git",
-        version: "master"
+	name: "notifications",
+	repo: "https://github.com/sharelatex/notifications-sharelatex.git",
+	version: "c6cca1731e0e21bfe7f29647788d9af9f8f6a24f"
 }]
