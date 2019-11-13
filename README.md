@@ -1,43 +1,12 @@
 # Overleaf Docker Image
 
-This is the source for building the Overleaf community-edition docker image.
+This is the base Overleaf image, with all dependencies pinned to the same versions as in the [official Docker image v2.0.1](https://hub.docker.com/r/sharelatex/sharelatex).
 
 
-## End-User Install
-Please see the [offical wiki for install
-guides](https://github.com/overleaf/overleaf/wiki)
+This image depends on mongodb and redis, as well as [sharelatex-clsi](https://hub.docker.com/r/shiftinv/sharelatex-clsi) which has been separated from the base image to simplify the TeX Live updating process. The CLSI component provides the TeX Live compilation environment and is updated to the latest TeX Live version (as of 2019-11). There are multiple CLSI containers available with different TeX Live schemes, view the image [tags](https://hub.docker.com/r/shiftinv/sharelatex-clsi/tags) for available options.  
+Check out the [docker-compose](https://github.com/shiftinv/docker-sharelatex/blob/master/docker-compose.yml) file for an example configuration.
 
+---
 
-## Development
-
-This repo contains two dockerfiles, `Dockerfile-base`, which builds the
-`sharelatex/sharelatex-base` image, and `Dockerfile` which builds the
-`sharelatex/sharelatex` (or "community") image.
-
-The Base image generally contains the basic dependencies like `wget` and
-`aspell`, plus `texlive`. We split this out because it's a pretty heavy set of
-dependencies, and it's nice to not have to rebuild all of that every time.
-
-The `sharelatex/sharelatex` image extends the base image and adds the actual Overleaf code
-and services.
-
-Use `make build-base` and `make build-community` to build these images.
-
-
-### How the Overleaf code gets here
-
-This repo uses [the public Overleaf
-repository](https://github.com/overleaf/overleaf), which used to be the main
-public source for the Overleaf system.
-
-That repo is cloned down into the docker image, and a script then installs all
-the services. 
-
-
-### How services run inside the container
-
-We use the [Phusion base-image](https://github.com/phusion/baseimage-docker)
-(which is extended by our `base` image) to provide us with a VM-like container
-in which to run the Overleaf services. Baseimage uses the `runit` service
-manager to manage services, and we add our init-scripts from the `./runit`
-folder.
+Other changes compared to the official image:
+- Optimized image size + build time
