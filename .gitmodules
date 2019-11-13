@@ -1,0 +1,3 @@
+[submodule "clsi"]
+	path = clsi
+	url = https://github.com/shiftinv/docker-sharelatex-clsi
