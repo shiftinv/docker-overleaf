@@ -1,9 +1,7 @@
 version: '2.2'
 services:
     sharelatex:
-        image: shiftinv/sharelatex
-        build:
-            context: .
+        image: shiftinv/sharelatex:latest
         container_name: sharelatex
         restart: unless-stopped
         depends_on:
@@ -68,8 +66,6 @@ services:
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: '<div>This system is run by department x</div>'
     clsi:
         image: shiftinv/sharelatex-clsi:full
-        build:
-            context: ./clsi
         restart: unless-stopped
         expose:
             - 3013
