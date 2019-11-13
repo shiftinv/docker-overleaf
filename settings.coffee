@@ -503,7 +503,9 @@ if process.env["SHARELATEX_TEMPLATES_USER_ID"]
 		mountPointUrl: "/templates"
 		user_id: process.env["SHARELATEX_TEMPLATES_USER_ID"]
 
-	settings.templateLinks = parse(process.env["SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS"])
+	# settings.templateLinks = parse(process.env["SHARELATEX_NEW_PROJECT_TEMPLATE_LINKS"])
+
+settings.customTemplates = require("./templates.json")
 
 
 # /Learn

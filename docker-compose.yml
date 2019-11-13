@@ -1,7 +1,7 @@
 version: '2.2'
 services:
     overleaf:
-        image: shiftinv/overleaf:latest
+        image: shiftinv/overleaf:dev
         container_name: overleaf
         restart: unless-stopped
         depends_on:
@@ -21,6 +21,9 @@ services:
             - 3009  # filestore
         volumes:
             - data:/var/lib/sharelatex
+            # templates:
+            # - ./templates.json:/etc/sharelatex/templates.json:ro
+            # - ./test-templates:/var/www/sharelatex/web/app/templates/test:ro
         environment:
             # [required for clsi connection]
             CLSI_HOST: 'clsi'

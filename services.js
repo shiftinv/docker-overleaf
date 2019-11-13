@@ -2,8 +2,8 @@ module.exports =
 
 [{
 	name: "web",
-	repo: "https://github.com/overleaf/web.git",
-	version: "8419e1170a51a4a08492a2b19bd4a45b91c60519"
+	repo: "https://github.com/shiftinv/overleaf-web.git",
+	version: "dev"
 }, {
 	name: "real-time",
 	repo: "https://github.com/overleaf/real-time.git",

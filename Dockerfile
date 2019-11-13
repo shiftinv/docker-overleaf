@@ -42,6 +42,10 @@ RUN adduser --system --group --home /var/www/sharelatex --no-create-home sharela
 ADD ${baseDir}/settings.coffee /etc/sharelatex/settings.coffee
 ENV SHARELATEX_CONFIG /etc/sharelatex/settings.coffee
 
+# Add empty template list
+# -----------------------
+RUN echo "{}" >> /etc/sharelatex/templates.json
+
 
 # Copy build dependencies
 # -----------------------
