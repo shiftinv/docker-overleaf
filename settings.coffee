@@ -82,23 +82,6 @@ settings =
 		history: redisConfig
 		websessions: redisConfig
 
-	# The compile server (the clsi) uses a SQL database to cache files and
-	# meta-data. sqllite is the default, and the load is low enough that this will
-	# be fine in production (we use sqllite at sharelatex.com).
-	#
-	# If you want to configure a different database, see the Sequelize documentation
-	# for available options:
-	#
-	#    https://github.com/sequelize/sequelize/wiki/API-Reference-Sequelize#example-usage
-	#
-	mysql:
-		clsi:
-			database: "clsi"
-			username: "clsi"
-			password: ""
-			dialect: "sqlite"
-			storage: Path.join(DATA_DIR, "db.sqlite")
-
 	# File storage
 	# ------------
 
@@ -134,10 +117,6 @@ settings =
 		dumpFolder:   Path.join(TMP_DIR, "dumpFolder")
 		# Where to write uploads before they are processed
 		uploadFolder: Path.join(TMP_DIR, "uploads")
-		# Where to write the project to disk before running LaTeX on it
-		compilesDir:  Path.join(DATA_DIR, "compiles")
-		# Where to cache downloaded URLs for the CLSI
-		clsiCacheDir: Path.join(DATA_DIR, "cache")
 
 	# Server Config
 	# -------------

@@ -21,19 +21,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
  && rm /etc/nginx/sites-enabled/default
 
 
-# Install qpdf
-# ------------
-RUN cd /opt \
- && wget https://s3.amazonaws.com/sharelatex-random-files/qpdf-6.0.0.tar.gz \
- && tar xzf qpdf-6.0.0.tar.gz \
- && cd qpdf-6.0.0 \
- && ./configure \
- && make \
- && make install \
- && ldconfig \
- && rm -rf /opt/qpdf-6.0.0 /opt/qpdf-6.0.0.tar.gz
-
-
 # Install Node6 (required by some services)
 # -----------------------------------------
 RUN cd /opt \
@@ -44,28 +31,6 @@ RUN cd /opt \
  && cd /opt/nodejs \
  && mv node-v6.17.1-linux-x64 6.17.1\
  && ln -s /opt/nodejs/6.17.1/bin/node /usr/bin/node6
-
-
-# Install TexLive
-# ---------------
-RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
- && mkdir /install-tl-unx \
- && tar -xvf install-tl-unx.tar.gz -C /install-tl-unx --strip-components=1 \
- && echo "selected_scheme scheme-basic" >> /install-tl-unx/texlive.profile \
- && /install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile \
- \
-# CTAN mirrors occasionally fail, in that case install TexLive against an
-# specific server, for example http://ctan.crest.fr
-# RUN wget http://ctan.crest.fr/tex-archive/systems/texlive/tlnet/install-tl-unx.tar.gz \
-#  && mkdir /install-tl-unx \
-#  && tar -xvf install-tl-unx.tar.gz -C /install-tl-unx --strip-components=1 \
-#  && echo "selected_scheme scheme-basic" >> /install-tl-unx/texlive.profile \
-#  && /install-tl-unx/install-tl -profile /install-tl-unx/texlive.profile -repository  http://ctan.crest.fr/tex-archive/systems/texlive/tlnet/ \
- \
- && rm -r /install-tl-unx \
- && rm install-tl-unx.tar.gz
-ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/texlive/2019/bin/x86_64-linux/
-RUN tlmgr install latexmk texcount
 
 
 # Set up sharelatex user and home directory
@@ -121,10 +86,6 @@ RUN cd /var/www/sharelatex \
 # ----------------------------
  && bash bin/install-services \
  && bash bin/compile-services \
- \
-# Links CLSI synctex to its default location
-# ------------------------------------------
- && ln -s /var/www/sharelatex/clsi/bin/synctex /opt/synctex \
  \
 # Change application ownership to www-data
 # ----------------------------------------
