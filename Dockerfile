@@ -17,7 +17,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
  && apt-get update \
  && apt-get install -y nodejs sudo build-essential wget net-tools unzip time imagemagick optipng strace nginx git python zlib1g-dev libpcre3-dev aspell aspell-* \
  && apt-get clean \
- && find /var/lib/apt/lists/ /tmp/ /var/tmp/ -mindepth 1 -maxdepth 1 -exec rm -rf {} + \
+ && find /var/lib/apt/lists/ /tmp/ /var/tmp/ -mindepth 1 -maxdepth 1 -exec rm -rf "{}" + \
  && rm /etc/nginx/sites-enabled/default
 
 
@@ -99,7 +99,7 @@ RUN cd /var/www/sharelatex \
 # Clean up caches/tmp/git/etc.
 # ------------------------
  && rm -rf /root/.node-gyp /root/.npm /var/www/node_modules \
- && find /tmp/ /var/tmp/ -mindepth 1 -maxdepth 1 -exec rm -rf {} + \
+ && find /tmp/ /var/tmp/ -mindepth 1 -maxdepth 1 -exec rm -rf "{}" + \
  && find /var/www/sharelatex -name ".git" -exec rm -rf "{}" +
 
 
