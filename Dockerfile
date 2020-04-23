@@ -55,14 +55,9 @@ ADD ${baseDir}/settings.coffee /etc/sharelatex/settings.coffee
 ENV SHARELATEX_CONFIG /etc/sharelatex/settings.coffee
 
 
-# Install dependencies needed to run configuration scripts
-# --------------------------------------------------------
-ADD ${baseDir}/package.json /var/www/package.json
-ADD ${baseDir}/git-revision.js /var/www/git-revision.js
-
-# Replace overleaf/config/services.js with the list of available 
-# services in Overleaf Community Edition
-# --------------------------------------------------------------
+# Copy build dependencies
+# -----------------------
+ADD ${baseDir}/git-revision.sh /var/www/git-revision.sh
 ADD ${baseDir}/services.js /var/www/sharelatex/config/services.js
 
 # Checkout Overleaf Community Edition repo
@@ -75,32 +70,39 @@ RUN cd /var/www/sharelatex \
  \
 # Checkout services
 # -----------------
- && cd /var/www \
- && npm install -g grunt-cli \
- && npm install \
- && cd /var/www/sharelatex \
- && npm install \
- && grunt install \
- \
-# install and compile services
+RUN cd /var/www/sharelatex \
+&&    npm install \
+&&    grunt install \
+  \
+# Cleanup not needed artifacts
 # ----------------------------
- && bash bin/install-services \
- && bash bin/compile-services \
- \
-# Change application ownership to www-data
-# ----------------------------------------
- && chown -R www-data:www-data /var/www/sharelatex \
- \
+&&  rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1) \
 # Stores the version installed for each service
 # ---------------------------------------------
- && cd /var/www \
- && node git-revision > revisions.txt \
- \
-# Clean up caches/tmp/git/etc.
+&&  cd /var/www \
+&&    ./git-revision.sh > revisions.txt \
+  \
+# Cleanup the git history
+# -------------------
+&&  rm -rf $(find /var/www/sharelatex -name .git)
+
+# Install npm dependencies
 # ------------------------
- && rm -rf /root/.node-gyp /root/.npm /var/www/node_modules \
- && find /tmp/ /var/tmp/ -mindepth 1 -maxdepth 1 -exec rm -rf "{}" + \
- && find /var/www/sharelatex -name ".git" -exec rm -rf "{}" +
+RUN cd /var/www/sharelatex \
+&&    bash ./bin/install-services \
+  \
+# Cleanup not needed artifacts
+# ----------------------------
+&&  rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1)
+
+# Compile CoffeeScript
+# --------------------
+RUN cd /var/www/sharelatex \
+&&    bash ./bin/compile-services
+
+# Links CLSI sycntex to its default location
+# ------------------------------------------
+RUN ln -s /var/www/sharelatex/clsi/bin/synctex /opt/synctex
 
 
 # Copy runit service startup scripts to its location
@@ -122,6 +124,16 @@ ADD ${baseDir}/logrotate/sharelatex /etc/logrotate.d/sharelatex
 # Copy Phusion Image startup scripts to its location
 # --------------------------------------------------
 COPY ${baseDir}/init_scripts/ /etc/my_init.d/
+
+# Copy app settings files
+# -----------------------
+COPY ${baseDir}/settings.coffee /etc/sharelatex/settings.coffee
+
+# Set Environment Variables
+# --------------------------------
+ENV WEB_API_USER "sharelatex"
+
+ENV SHARELATEX_APP_NAME "Overleaf Community Edition"
 
 
 EXPOSE 80

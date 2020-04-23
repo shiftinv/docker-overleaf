@@ -3,7 +3,7 @@ Path = require('path')
 # These credentials are used for authenticating api requests
 # between services that may need to go over public channels
 httpAuthUser = "sharelatex"
-httpAuthPass = "CRYPTO_RANDOM" # Randomly generated for you
+httpAuthPass = process.env["WEB_API_PASSWORD"]
 httpAuthUsers = {}
 httpAuthUsers[httpAuthUser] = httpAuthPass
 
@@ -81,6 +81,9 @@ settings =
 		lock: redisConfig
 		history: redisConfig
 		websessions: redisConfig
+		api: redisConfig
+		pubsub: redisConfig
+		project_history: redisConfig
 
 	# File storage
 	# ------------
@@ -141,7 +144,7 @@ settings =
 	# If provided, a sessionSecret is used to sign cookies so that they cannot be
 	# spoofed. This is recommended.
 	security:
-		sessionSecret: process.env["SHARELATEX_SESSION_SECRET"] or "CRYPTO_RANDOM" # This was randomly generated for you
+		sessionSecret: process.env["SHARELATEX_SESSION_SECRET"] or process.env["CRYPTO_RANDOM"]
 
 	# These credentials are used for authenticating api requests
 	# between services that may need to go over public channels
