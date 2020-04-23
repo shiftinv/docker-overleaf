@@ -70,8 +70,8 @@ RUN cd /var/www/sharelatex \
  \
 # Checkout services
 # -----------------
-RUN cd /var/www/sharelatex \
- && npm install -g grunt-cli
+ && cd /var/www/sharelatex \
+ && npm install -g grunt-cli \
  && npm install \
  && grunt install \
   \
