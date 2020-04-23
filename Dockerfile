@@ -71,34 +71,38 @@ RUN cd /var/www/sharelatex \
 # Checkout services
 # -----------------
 RUN cd /var/www/sharelatex \
-&&    npm install \
-&&    grunt install \
+ && npm install -g grunt-cli
+ && npm install \
+ && grunt install \
   \
 # Cleanup not needed artifacts
 # ----------------------------
-&&  rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1) \
+ && rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1) \
 # Stores the version installed for each service
 # ---------------------------------------------
-&&  cd /var/www \
-&&    ./git-revision.sh > revisions.txt \
+ && cd /var/www \
+ && ./git-revision.sh > revisions.txt \
   \
 # Cleanup the git history
 # -------------------
-&&  rm -rf $(find /var/www/sharelatex -name .git)
+ && rm -rf $(find /var/www/sharelatex -name .git)
+
 
 # Install npm dependencies
 # ------------------------
 RUN cd /var/www/sharelatex \
-&&    bash ./bin/install-services \
+ && bash ./bin/install-services \
   \
 # Cleanup not needed artifacts
 # ----------------------------
-&&  rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1)
+ && rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1)
+
 
 # Compile CoffeeScript
 # --------------------
 RUN cd /var/www/sharelatex \
-&&    bash ./bin/compile-services
+ && bash ./bin/compile-services
+
 
 # Links CLSI sycntex to its default location
 # ------------------------------------------
