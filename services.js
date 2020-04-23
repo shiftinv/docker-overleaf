@@ -1,47 +1,47 @@
-module.exports = 
+module.exports =
 
 [{
 	name: "web",
-	repo: "https://github.com/sharelatex/web-sharelatex.git",
-	version: "fdeddd220c9b3e6d57b59465a2415280adea26c4"
+	repo: "https://github.com/overleaf/web.git",
+	version: "8419e1170a51a4a08492a2b19bd4a45b91c60519"
 }, {
 	name: "real-time",
-	repo: "https://github.com/sharelatex/real-time-sharelatex.git",
-	version: "2060a2fdc5c6badfa92a717a6ff35dfe91ad9f20"
+	repo: "https://github.com/overleaf/real-time.git",
+	version: "0ee9b55c5f41206dcffc5a869adc0716bd763414"
 }, {
 	name: "document-updater",
-	repo: "https://github.com/sharelatex/document-updater-sharelatex.git",
-	version: "0c3d8ca80b526fa13911e49372be396f6669396d"
+	repo: "https://github.com/overleaf/document-updater.git",
+	version: "95e9f21a20f015e5b2a42403fa60790b8e561944"
 }, {
 	name: "filestore",
-	repo: "https://github.com/sharelatex/filestore-sharelatex.git",
-	version: "43b8a9093b8d1d394bbd6111ac19221faef5e05c"
+	repo: "https://github.com/overleaf/filestore.git",
+	version: "c8f869293273af3e6251f8d7bab714cea388cf96"
 }, {
 	name: "track-changes",
-	repo: "https://github.com/sharelatex/track-changes-sharelatex.git",
-	version: "5e3e5e6cb7f94a205f5848e1b84a22c3e2778dce"
+	repo: "https://github.com/overleaf/track-changes.git",
+	version: "5eb119586e854b4d58b22bb707bf284a2b8152cc"
 }, {
 	name: "docstore",
-	repo: "https://github.com/sharelatex/docstore-sharelatex.git",
-	version: "897e7b044a923de1cc584179d493974e81f19108"
+	repo: "https://github.com/overleaf/docstore.git",
+	version: "6c89b22d984941ca5a5c82968547ccecfb42e944"
 }, {
 	name: "chat",
-	repo: "https://github.com/sharelatex/chat-sharelatex.git",
-	version: "6b8c6ef44ffa086c2183f067790e60a272b3a004"
+	repo: "https://github.com/overleaf/chat.git",
+	version: "0eec2c6d843c2133b1286ccba58afada9cbad683"
 }, {
 	name: "tags",
-	repo: "https://github.com/sharelatex/tags-sharelatex.git",
-	version: "9b954d87941c7c56518ef28e13efbbf85b52c168"
+	repo: "https://github.com/overleaf/tags.git",
+	version: "bd2c8a3ad91649a2aac61d2d69e08a86de70b5ba"
 }, {
 	name: "spelling",
-	repo: "https://github.com/sharelatex/spelling-sharelatex.git",
-	version: "fcd804349339ab07f0d3c7653203cb04fed87f72"
+	repo: "https://github.com/overleaf/spelling.git",
+	version: "82834e5f30227d18e897109f8ac989efc728acd2"
 }, {
 	name: "contacts",
-	repo: "https://github.com/sharelatex/contacts-sharelatex.git",
-	version: "2a41cc7ea4c5ae5f564aacce79083f00b88c5913"
+	repo: "https://github.com/overleaf/contacts.git",
+	version: "6c142ccc7a6e75493337422fbea59b0c871a0207"
 }, {
 	name: "notifications",
-	repo: "https://github.com/sharelatex/notifications-sharelatex.git",
-	version: "c6cca1731e0e21bfe7f29647788d9af9f8f6a24f"
+	repo: "https://github.com/overleaf/notifications.git",
+	version: "3600974e7d61a8edda9bc69af0b1dc0d9e4bae2e"
 }]

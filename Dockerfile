@@ -65,7 +65,7 @@ ADD ${baseDir}/services.js /var/www/sharelatex/config/services.js
 RUN cd /var/www/sharelatex \
  && mv config /tmp/ \
  && git clone https://github.com/overleaf/overleaf.git . \
- && git checkout deb1ca36391c71cfec3720ddd9181e0f8be89101 \
+ && git checkout 689104d93e14008e68e01b1bc9d65ba94ed669cb \
  && mv /tmp/config/services.js config/ \
  \
 # Checkout services
