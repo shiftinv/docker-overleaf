@@ -1,8 +1,8 @@
 version: '2.2'
 services:
-    sharelatex:
-        image: shiftinv/sharelatex:latest
-        container_name: sharelatex
+    overleaf:
+        image: shiftinv/overleaf:latest
+        container_name: overleaf
         restart: unless-stopped
         depends_on:
             clsi:
@@ -24,7 +24,7 @@ services:
         environment:
             # [required for clsi connection]
             CLSI_HOST: 'clsi'
-            FILESTORE_HOST: 'sharelatex'  # passed to clsi
+            FILESTORE_HOST: 'overleaf'  # passed to clsi
             LISTEN_ADDRESS: '0.0.0.0'  # allow clsi to access filestore
 
             # General options
@@ -65,7 +65,7 @@ services:
             # SHARELATEX_EMAIL_SMTP_IGNORE_TLS: 'false'
             # SHARELATEX_CUSTOM_EMAIL_FOOTER: '<div>This system is run by department x</div>'
     clsi:
-        image: shiftinv/sharelatex-clsi:full
+        image: shiftinv/overleaf-clsi:full
         restart: unless-stopped
         expose:
             - 3013
