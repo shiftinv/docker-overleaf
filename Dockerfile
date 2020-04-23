@@ -77,7 +77,7 @@ RUN cd /var/www/sharelatex \
   \
 # Cleanup not needed artifacts
 # ----------------------------
- && rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1) \
+ && find /root/.cache /root/.npm /tmp /var/tmp -mindepth 1 -maxdepth 1 -exec rm -rf "{}" + \
 # Stores the version installed for each service
 # ---------------------------------------------
  && cd /var/www \
@@ -85,7 +85,7 @@ RUN cd /var/www/sharelatex \
   \
 # Cleanup the git history
 # -------------------
- && rm -rf $(find /var/www/sharelatex -name .git)
+ && find /var/www/sharelatex -name .git -exec rm -rf "{}" +
 
 
 # Install npm dependencies
@@ -95,7 +95,7 @@ RUN cd /var/www/sharelatex \
   \
 # Cleanup not needed artifacts
 # ----------------------------
- && rm -rf /root/.cache /root/.npm $(find /tmp/ -mindepth 1 -maxdepth 1)
+ && find /root/.cache /root/.npm /tmp /var/tmp -mindepth 1 -maxdepth 1 -exec rm -rf "{}" +
 
 
 # Compile CoffeeScript
