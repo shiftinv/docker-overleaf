@@ -26,7 +26,7 @@ services:
             CLSI_HOST: 'clsi'
             FILESTORE_HOST: 'sharelatex'  # passed to clsi
             LISTEN_ADDRESS: '0.0.0.0'  # allow clsi to access filestore
-            
+
             # General options
             # Same property, unfortunately with different names in different locations
             SHARELATEX_REDIS_HOST: 'redis'
@@ -46,7 +46,7 @@ services:
 
             # SHARELATEX_ALLOW_PUBLIC_ACCESS: 'true'
             # SHARELATEX_ALLOW_ANONYMOUS_READ_AND_WRITE_SHARING: 'true'
-            
+
             SHARELATEX_APP_NAME: 'Overleaf Community Edition'
             # SHARELATEX_NAV_TITLE: 'Our ShareLaTeX Instance'
             # SHARELATEX_HEADER_IMAGE_URL: 'http://example.com/mylogo.png'

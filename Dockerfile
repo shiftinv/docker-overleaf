@@ -21,18 +21,6 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
  && rm /etc/nginx/sites-enabled/default
 
 
-# Install Node6 (required by some services)
-# -----------------------------------------
-RUN cd /opt \
- && wget https://nodejs.org/dist/v6.17.1/node-v6.17.1-linux-x64.tar.gz \
- && mkdir -p /opt/nodejs \
- && tar -xzf node-v6.17.1-linux-x64.tar.gz -C /opt/nodejs/ \
- && rm node-v6.17.1-linux-x64.tar.gz \
- && cd /opt/nodejs \
- && mv node-v6.17.1-linux-x64 6.17.1\
- && ln -s /opt/nodejs/6.17.1/bin/node /usr/bin/node6
-
-
 # Set up sharelatex user and home directory
 # -----------------------------------------
 RUN adduser --system --group --home /var/www/sharelatex --no-create-home sharelatex \
