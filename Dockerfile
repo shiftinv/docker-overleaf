@@ -104,11 +104,6 @@ RUN cd /var/www/sharelatex \
  && bash ./bin/compile-services
 
 
-# Links CLSI sycntex to its default location
-# ------------------------------------------
-RUN ln -s /var/www/sharelatex/clsi/bin/synctex /opt/synctex
-
-
 # Copy runit service startup scripts to its location
 # --------------------------------------------------
 ADD ${baseDir}/runit /etc/service
