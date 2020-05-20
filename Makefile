@@ -9,4 +9,4 @@ build-clsi:
 build-clsi-sagetex:
 	$(MAKE) -C clsi build-sagetex SCHEME=$(CLSI_SCHEME)
 
-PHONY: build
+PHONY: build build-clsi build-clsi-sagetex
